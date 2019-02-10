@@ -1,106 +1,106 @@
-Course,Units
-Heinz Journal,6
-Diversity and Inclusion,12
-Women and Public Policy,6
-"Poverty, Inequality and Social Policies",12
-Public Policy Analysis,12
-Public Finance:  Theories and Cases,12
-Statistical Reasoning,12
-Intermediate Economic Analysis,12
-Applied Economic Analysis,12
-Statistical Reasoning with R,12
-Policy and Politics an International Perspective,12
-Policy And Politics In American Political Institutions,12
-Writing for Public Policy,6
-Strategic Presentation Skills,6
-Physical Technical Systems I,12
-Physical Technical Systems II,12
-Health Care Management,6
-Management Science I: Optimization and Multicriteria Methods,6
-Financial Statements and Analysis of Companies,6
-Financial Analysis,12
-Management Accounting,6
-Money & Politics,6
-Introduction to Database Management,6
-Methods Of Policy Analysis,12
-Government Accounting,6
-Urban Policy,6
-Public Finance,12
-Budget Management Control System,12
-Applied Economics Analysis II,12
-Systems Synthesis I,12
-Systems Synthesis II,12
-Urban Systems Strategy,6
-Urban And Regional Economic Development,12
-Financial Analysis of Non-Profits,6
-Methods of Policy Analysis - The Future of Work,12
-Cost-Benefit Analysis,6
-Real Estate Development,6
-The Rise of the Asian Economies,12
-Management Science II: Decision and Risk Modeling,6
-Human Rights Conflicts & Development,12
-"Behavior, Experiments & Institutions: Insights on Economics of Development",6
-"Cities, Technology, and the Environment",6
-Intermediate Database Design and SQL,6
-AI for Public Policy,None
-Public Expenditure Analysis,12
-Intermediate Statistical Methods,6
-Media And Public Policy,6
-Environmental Policy and Governance,6
-Multi-Media,12
-Policy Innovation Lab,6
-Financing the Public Good,6
-Sustainable Community Development,12
-Integrated Community Energy Systems,12
-Environmental Policy And Planning,12
-Media & Communication Design I,6
-Public Policy Analytics: Cases and Issues,6
-Media & Communication Design II,6
-Energy Policy,6
-Introduction to Programming with Python,6
-Environmental Politics and Policy,6
-Public Private Partnerships I: Theory and Design,6
-Education Finance and Policy,12
-Health Care Quality & Performance Improvement,6
-Economic Evaluation of Health Technologies,None
-Critical Analysis of Policy Research,6
-Program Evaluation,12
-Cost Benefit Analysis,6
-Innovation Management in Practice,3
-Advanced Financial Management of Health Care,6
-"Health Law, Compliance and Ethics",6
-Population Health,6
-Health Care Geographical Information Systems,12
-Health Policy and Management Systems,6
-Global Health Security,3
-Public Policy Implementation,6
-Unlocking the Development Finance Toolbox to Support Sustainable Econ Dev,3
-Entrepreneurship and Business Plan Development,12
-Grand Corruption and Rule of Law,6
-Societal Consequences of Technological Change:  Education,3
-High Reliability in Healthcare,6
-Understanding and Preventing Corruption K2,None
-Policy in a Global Economy,6
-Health Policy,6
-Policy and Leadership in Public Education,6
-Large Scale Data Analysis for Public Policy,6
-Special Topics: New Technology Commercialization:  Public Policy Strategies,6
-Using R for Policy Data Analysis,6
-Special Topics: Principles & Practices of R&D Management,6
-Behavioral Economics in Organizations,12
-Healthcare Marketing,6
-Behavioral Economics in Public Policy,12
-Data Visualization and Dashboards,6
-Public Policy & Decision Making,6
-Apprenticeship Workshop,3
-Policy Topics: Environmental Policy,6
-Policy Topics I: Federal Budget Policy,6
-Policy Topics:  Sustainable Development,6
-Ph.D. Seminar I,12
-Ph.D. Seminar II,12
-Machine Learning in Policy,12
-Statistical Theory for Social and Policy Research,12
-PhD Econometrics I,12
-Econometric Theory and Methods,12
-Ph.D. Microeconomics,12
-Organizations Theory,12
+Index,Course,Units,Information
+,Heinz Journal,6,Making
+,Diversity and Inclusion,12,Cost
+,Women and Public Policy,6,Technology
+,"Poverty, Inequality and Social Policies",12,AI
+1,Public Policy Analysis,12,R&D
+,Public Finance:  Theories and Cases,12,II:
+,Statistical Reasoning,12,Inequality
+1,Intermediate Economic Analysis,12,Improvement
+1,Applied Economic Analysis,12,Econometrics
+,Statistical Reasoning with R,12,Diversity
+,Policy and Politics an International Perspective,12,Asian
+,Policy And Politics In American Political Institutions,12,Planning
+,Writing for Public Policy,6,Private
+,Strategic Presentation Skills,6,Toolbox
+,Physical Technical Systems I,12,Economy
+,Physical Technical Systems II,12,Commercialization:
+,Health Care Management,6,Reasoning
+,Management Science I: Optimization and Multicriteria Methods,6,Program
+1,Financial Statements and Analysis of Companies,6,Preventing
+1,Financial Analysis,12,Learning
+,Management Accounting,6,Practice
+,Money & Politics,6,Synthesis
+,Introduction to Database Management,6,Entrepreneurship
+1,Methods Of Policy Analysis,12,&
+,Government Accounting,6,Journal
+,Urban Policy,6,Real
+,Public Finance,12,Presentation
+,Budget Management Control System,12,Media
+1,Applied Economics Analysis II,12,"Law,"
+,Systems Synthesis I,12,Dashboards
+,Systems Synthesis II,12,"Poverty,"
+,Urban Systems Strategy,6,Corruption
+,Urban And Regional Economic Development,12,Support
+1,Financial Analysis of Non-Profits,6,Estate
+1,Methods of Policy Analysis - The Future of Work,12,Grand
+1,Cost-Benefit Analysis,6,In
+,Real Estate Development,6,Institutions:
+,The Rise of the Asian Economies,12,Visualization
+,Management Science II: Decision and Risk Modeling,6,Introduction
+,Human Rights Conflicts & Development,12,Strategy
+,"Behavior, Experiments & Institutions: Insights on Economics of Development",6,Federal
+,"Cities, Technology, and the Environment",6,Risk
+,Intermediate Database Design and SQL,6,Compliance
+,AI for Public Policy,None,Women
+1,Public Expenditure Analysis,12,Cost-Benefit
+,Intermediate Statistical Methods,6,Apprenticeship
+,Media And Public Policy,6,Scale
+,Environmental Policy and Governance,6,Regional
+,Multi-Media,12,Physical
+,Policy Innovation Lab,6,Change:
+,Financing the Public Good,6,Finance
+,Sustainable Community Development,12,Lab
+,Integrated Community Energy Systems,12,Integrated
+,Environmental Policy And Planning,12,III
+,Media & Communication Design I,6,The
+,Public Policy Analytics: Cases and Issues,6,R
+,Media & Communication Design II,6,Of
+,Energy Policy,6,Security
+,Introduction to Programming with Python,6,Python
+,Environmental Politics and Policy,6,Education
+,Public Private Partnerships I: Theory and Design,6,New
+,Education Finance and Policy,12,Non-Profits
+,Health Care Quality & Performance Improvement,6,Technological
+,Economic Evaluation of Health Technologies,None,Energy
+1,Critical Analysis of Policy Research,6,Organizations
+,Program Evaluation,12,Inclusion
+1,Cost Benefit Analysis,6,Marketing
+,Innovation Management in Practice,3,Social
+,Advanced Financial Management of Health Care,6,Expenditure
+,"Health Law, Compliance and Ethics",6,Experiments
+,Population Health,6,Accounting
+,Health Care Geographical Information Systems,12,and
+,Health Policy and Management Systems,6,And
+,Global Health Security,3,Modeling
+,Public Policy Implementation,6,on
+,Unlocking the Development Finance Toolbox to Support Sustainable Econ Dev,3,Human
+,Entrepreneurship and Business Plan Development,12,Science
+,Grand Corruption and Rule of Law,6,Reliability
+,Societal Consequences of Technological Change:  Education,3,Good
+,High Reliability in Healthcare,6,Future
+,Understanding and Preventing Corruption K2,None,II
+,Policy in a Global Economy,6,Unlocking
+,Health Policy,6,Design
+,Policy and Leadership in Public Education,6,I
+1,Large Scale Data Analysis for Public Policy,6,Benefit
+,Special Topics: New Technology Commercialization:  Public Policy Strategies,6,Writing
+1,Using R for Policy Data Analysis,6,PhD
+,Special Topics: Principles & Practices of R&D Management,6,Financial
+,Behavioral Economics in Organizations,12,Topics:
+,Healthcare Marketing,6,Technical
+,Behavioral Economics in Public Policy,12,Population
+,Data Visualization and Dashboards,6,Microeconomics
+,Public Policy & Decision Making,6,Economics
+,Apprenticeship Workshop,3,Rise
+,Policy Topics: Environmental Policy,6,Workshop
+,Policy Topics I: Federal Budget Policy,6,Control
+,Policy Topics:  Sustainable Development,6,for
+,Ph.D. Seminar I,12,to
+,Ph.D. Seminar II,12,Applied
+,Machine Learning in Policy,12,Sustainable
+,Statistical Theory for Social and Policy Research,12,Database
+,PhD Econometrics I,12,Evaluation
+,Econometric Theory and Methods,12,Cases
+,Ph.D. Microeconomics,12,Decision
+,Organizations Theory,12,Methods
