@@ -1,13 +1,6 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Feb  9 14:12:30 2019
-
-@author: murie
-"""
 
 from urllib.request import urlopen  # b_soup_1.py
 from bs4 import BeautifulSoup
-import pandas as pd
 import csv
 
 def course_info_raw():
@@ -64,13 +57,23 @@ def course_info_clean():
     course_units = ["Units"]
     for x in course_info[2:317:3]:
         course_units.append(x)
+        
+    keywords = ["Keywords", ]
+    for word in course_title:
+        if word in ['the', 'a','as', 'and', 'an', '&', '-', 'for']:
+            pass
+        else:
+            key_word = [m for m in word.split()]
+        keywords.extend(key_word)
+    keywords = set(keywords)
     
     # creates .csv file
-    entries1 = [course_title, course_units]
+    entries1 = [course_title, course_units, keywords]
     entries2 = zip(*entries1)
     myFile = open('cmu_clean_data.csv', 'w', newline='')
     with myFile:
         writer = csv.writer(myFile)
         writer.writerows(entries2)
 
-course_info_clean()
+if __name__ == "__main__":
+	course_info_clean()
