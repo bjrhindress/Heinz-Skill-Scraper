@@ -188,7 +188,7 @@ def return_job_count(user_input_job,user_input_city,user_input_state):
         skill_sums.append(sum(df[skill]))
     
     job_counts_dict={"Skill":skill_list,"Job_Matches":skill_sums}
-    job_counts=pd.DataFrame(job_counts_dict).sort_values(by="Job_Count",ascending=False)
+    job_counts=pd.DataFrame(job_counts_dict).sort_values(by="Job_Matches",ascending=False)
     job_counts=job_counts[job_counts["Job_Matches"]>0]
     return(job_counts)
 
