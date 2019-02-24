@@ -126,7 +126,7 @@ def get_skill_map(skills_list):
 
     # now we can iterate through the skills list and build our final dictionary
     # give each skill its own list
-    skills_to_courses = {}.fromkeys(skills_list, [])
+    skills_to_courses = {k : [] for k in skills_list}
 
     for skill in skills_list:
         # now check every course for that skill
@@ -156,7 +156,7 @@ if __name__ == '__main__':
         test_list = sys.argv[1:]
     else:
         test_list = ['Management', 'software', 'knowledge']
-        
+
     results = get_skill_map(test_list)
 
     write_to_csv(results)
