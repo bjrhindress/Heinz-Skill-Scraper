@@ -66,7 +66,10 @@ def get_course_links():
     # Each course link is contained in a <tr> element with class="clickable-row"
     course_rows = soup.findAll('tr', {'class': 'clickable-row'})
     for row in course_rows:
-        names.append(row.find_all('td')[1].string)
+        td = row.findAll('td')
+        num = td[0].string
+        name = td[1].string
+        names.append(num + ": " + name)
         links.append(html_base + row.get('data-href'))
 
     return dict(zip(names, links))
