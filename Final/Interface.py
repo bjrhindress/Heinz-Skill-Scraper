@@ -17,23 +17,6 @@ import heinz_scraper as hs
 skill_dictionary = {'Financial Analyst':['Know how to analyze things I guess', 'Statistical analysis specifically'], 'Project Manager':'Dont hate people'}
 course_dictionary = {'Financial Analyst':['Programming R for Analytics', 'Statistical Analysis for Analytics 101'], 'Project Manager':'Project Management 101'}
 
-
-# Get DF of BLS with Data
-df_bls = b.get_df_bls()
-
-# Get full list of BLS-tracked jobs
-job_list = b.get_job_list(df_bls)
-
-# Get full list of Payscale.com tracked skills 
-skill_list = mi.get_skill_list()
-
-# Get DF of number of jobs returned for a given job search from the BLS job_list
-job_df = mi.scrape_pages('Financial Analysts','Pittsburgh','PA',skill_list)
-
-# Get count of job skills for the searched job 
-job_skill_count = mi.return_job_count(skill_list,job_df)
-
-
 def skill_builder_interface(skill_dictionary, course_dictionary):
     
     # Create command for submit button
