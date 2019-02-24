@@ -192,9 +192,10 @@ def return_job_count(user_input_job,user_input_city,user_input_state):
     job_counts=job_counts[job_counts["Job_Matches"]>0]
     return(job_counts)
 
-
 # In[139]:
 
+df2 = return_job_count("Financial Analysts","Pittsburgh","PA")
+df2
 
 
 

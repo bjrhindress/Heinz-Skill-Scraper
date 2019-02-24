@@ -23,8 +23,9 @@ import re
 import spacy
 
 # can replace both of these with  nlp = spacy.load('en')
-import en_core_web_sm
-nlp = en_core_web_sm.load()
+# import en_core_web_sm
+# nlp = en_core_web_sm.load()
+nlp = spacy.load('en')
 
 
 def get_course_description(link):
