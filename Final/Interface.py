@@ -131,7 +131,7 @@ def skill_builder_interface():
     
     lbl_output_postings = Label(window, text="\nCurrent Postings in Pittsburgh,PA", bg="white", fg="red4", font="times 14 bold")
     lbl_output_postings.grid(row=6, column=1,sticky=W)
-    output_postings = Text(window, width=35, height=6, wrap=NONE, bg="MistyRose2", bd=0)
+    output_postings = Text(window, width=35, height=6, wrap=NONE, bg="MistyRose2", bd=2)
     output_postings.grid(row=7, column=1, columnspan=1, sticky = N+S+W+E)
 
     # Create an exit button
