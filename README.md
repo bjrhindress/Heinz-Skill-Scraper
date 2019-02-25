@@ -1,12 +1,6 @@
  
- 
- One “READEME” file
 
 
-
-§  Screenshots when helpful
-
-o   Link to video
 
 o   Submit as PDF
 
@@ -45,22 +39,20 @@ o   Obtaining an API key
 
 ## Run Instructions 
 
-o   Instructions on how to install and run project
+After installing necessary modules, simply run the **Interface.py** program to launch the GUI.  The integrated master controller within the GUI will call other necessary modules.  Select a job from the drop-down menu and wait for the information! 
 
-## Modules included in this project: 
+## Written-Modules included in this project: 
 
-- **Interface.py**: The Main Controller :iphone:.  This script creates the Heinz SkillScraper GUI, allows for user input, and draws on data from each of the other modules.
+- :iphone: **Interface.py**: The Main Controller. This script creates the Heinz SkillScraper GUI, allows for user input, and draws on data from each of the other modules.
 
-- **bls_data_frame.py** :chart: This script generates a data frame, list of BLS-tracked jobs, and a list of salary and employment figures for a selected job.
+- :chart: **bls_data_frame.py**: This script generates a data frame, list of BLS-tracked jobs, and a list of salary and employment figures for a selected job.
 
-- **payscale_scraper.py** :dollar:This scrapes payscale.com for an up-to-date list of payscale.com skill listings. Not used in production version. 
+- :dollar: **payscale_scraper.py**: This scrapes payscale.com for an up-to-date list of payscale.com skill listings. Not used in production version. 
 
-- **Match_Indeed_to_skill.py** :briefcase: Scrapes the top 5-pages from a selected indeed.com job search. Cross-compares and counts the number of job skill occurrences, based on payscale.com skill lists. 
+- :briefcase: **Match_Indeed_to_skill.py**: Scrapes the top 5-pages from a selected indeed.com job search. Cross-compares and counts the number of job skill occurrences, based on payscale.com skill lists. 
 
-- **heinz_scraper.py** :school: This script scrapes the current Heinz course catalog, parses course descriptions, and compares keywords against key skill-words identified in the indeed.com scrape.  It then returns a list of all courses matching the job-skill pair. 
+- :school: **heinz_scraper.py**: This script scrapes the current Heinz course catalog, parses course descriptions, and compares keywords against key skill-words identified in the indeed.com scrape.  It then returns a list of all courses matching the job-skill pair. 
 
-
-- 
 ## Motivation
 A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
 
@@ -75,8 +67,10 @@ If you're using any code style like xo, standard etc. That will help others whil
 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
  
-## Screenshots
-Include logo/demo screenshot etc.
+## Screenshots and Video 
+§  Screenshots when helpful
+
+o   Link to video
 
 ## Tech/framework used
 Ex. -
