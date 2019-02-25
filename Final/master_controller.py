@@ -1,7 +1,7 @@
 # read in bls_data_frame module
 import bls_data_frame as b
-# read in the Match_Indeed_to_skill module
-import Match_Indeed_to_skill as mi
+# read in the match_indeed_to_skill module
+import match_indeed_to_skill as mi
 # read in the heinz_scraper module
 import heinz_scraper as hs
 
@@ -21,7 +21,7 @@ job_df = mi.scrape_pages('Financial Analysts','Pittsburgh','PA',skill_list)
 job_skill_count = mi.return_job_count(skill_list,job_df)
 
 # Get skill_map
-skill_map = hs.get_skill_map(job_skill_count['Skill'].values)
+skill_map = hs.get_skill_map(job_skill_count["Skill"].values)
 
 for i in skill_map.items():
     print(i)

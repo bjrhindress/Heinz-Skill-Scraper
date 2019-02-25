@@ -11,8 +11,8 @@ if "Tkinter" not in sys.modules:
 
 # read in bls_data_frame module
 import bls_data_frame as b
-# read in the Match_Indeed_to_skill module
-import Match_Indeed_to_skill as mi
+# read in the match_indeed_to_skill module
+import match_indeed_to_skill as mi
 # read in the heinz_scraper module
 import heinz_scraper as hs
 import pandas as pd
@@ -23,47 +23,53 @@ df_bls = b.get_df_bls()
 # Get full list of BLS-tracked jobs
 job_list = b.get_job_list(df_bls)
 
+# Get full list of possible skills
+print("Scraping skills from Payscale...".ljust(35), end='')
+skill_list = mi.get_skill_list()
+skill_list = [x.strip() for x in skill_list]
+print("done.")
+
+# Run initial Heinz Course scraping
+# full_skill_map = hs.get_full_skill_map_from_list(skill_list)
+
+# TODO: This is dummy data, replace with actual data...
 skill_dictionary = {'Financial Analyst':['Know how to analyze things I guess', 'Statistical analysis specifically'], 'Project Manager':'Dont hate people'}
 course_dictionary = {'Financial Analyst':['Programming R for Analytics', 'Statistical Analysis for Analytics 101'], 'Project Manager':'Project Management 101'}
 
-def skill_builder_interface(skill_dictionary, course_dictionary):
-    
+def skill_builder_interface():
     # Create command for submit button
     def click():
-        
-        # Get Drop-down selection 
+
+        # Get Drop-down selection
         entered_text = variable.get()
-        
-        # Get full list of possible skills 
-        skill_list = mi.get_skill_list()
-        
-        # Set Job to drop-down text 
+
+        # Set Job to drop-down text
         job = entered_text
-        
-        # Get Job_stats 
+
+        # Get Job_stats
         job_stats = b.get_job_stats(df_bls, job)
-        
-        #Get Indeed scrape 
+
+        #Get Indeed scrape
         job_df = mi.scrape_pages(job,'Pittsburgh','PA',skill_list)
-        
-        # Match skills - jobs 
+
+        # Match skills - jobs
         job_skill_count = mi.return_job_count(skill_list,job_df)
-        
-        # Match skills to Heinz course listings 
+
+        # Match skills to Heinz course listings
         skill_map = hs.get_skill_map(job_skill_count['Skill'].values)
-        # turn courses into a printable format 
+
+        # turn courses into a printable format
         course_set = set()
         for i in skill_map.values():
-            for j in i:
-                course_set.add(j)
+            course_set.update(i)
         course_pd = pd.DataFrame(list(course_set))
 
         output_job.delete(0.0, END)
         output_job.insert(END, job_stats)
-        
+
         output_skills.delete(0.0, END)
         output_skills.insert(END, job_skill_count)
-        
+
         output_courses.delete(0.0, END)
         output_courses.insert(END, course_pd.values)
 
@@ -102,7 +108,7 @@ def skill_builder_interface(skill_dictionary, course_dictionary):
     lbl_output_courses.grid(row=4, column=1, sticky=W)
     output_courses = Text(window, width=35, height=6, wrap=WORD, bg="MistyRose2", bd=2)
     output_courses.grid(row=5, column=1, columnspan=1, sticky = N+S+W+E)
-    
+
     lbl_output_job = Label(window, text="\nJob Information:", bg="white", fg="red4", font="times 14 bold")
     lbl_output_job.grid(row=6, column=0, sticky=W)
     output_job = Text(window, width=35, height=6, wrap=WORD, bg="MistyRose2", bd=2)
@@ -118,4 +124,7 @@ def skill_builder_interface(skill_dictionary, course_dictionary):
 
     window.mainloop()
 
-skill_builder_interface(skill_dictionary, course_dictionary)
+###########################
+# Do that thing
+skill_builder_interface()
+###########################

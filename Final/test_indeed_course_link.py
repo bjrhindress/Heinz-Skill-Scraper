@@ -6,8 +6,8 @@ This is a temporary script file.
 """
 #read in the heinz_scraper module
 import heinz_scraper as hs
-#read in the Match_Indeed_to_skill module
-import Match_Indeed_to_skill as mi
+#read in the match_indeed_to_skill module
+import match_indeed_to_skill as mi
 
 #scrape first 10 jobs
 skills=mi.return_job_count('analyst','pittsburgh','pa')[0:5]
