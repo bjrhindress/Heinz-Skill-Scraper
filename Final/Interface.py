@@ -5,7 +5,9 @@ Created on Sat Feb 23 14:34:54 2019
 @author: murie
 """
 
-from tkinter import *
+import sys
+if "Tkinter" not in sys.modules:
+    from tkinter import *
 
 # read in bls_data_frame module
 import bls_data_frame as b
@@ -13,6 +15,13 @@ import bls_data_frame as b
 import Match_Indeed_to_skill as mi
 # read in the heinz_scraper module
 import heinz_scraper as hs
+import pandas as pd
+
+# Get DF of BLS with Data
+df_bls = b.get_df_bls()
+
+# Get full list of BLS-tracked jobs
+job_list = b.get_job_list(df_bls)
 
 skill_dictionary = {'Financial Analyst':['Know how to analyze things I guess', 'Statistical analysis specifically'], 'Project Manager':'Dont hate people'}
 course_dictionary = {'Financial Analyst':['Programming R for Analytics', 'Statistical Analysis for Analytics 101'], 'Project Manager':'Project Management 101'}
@@ -22,24 +31,41 @@ def skill_builder_interface(skill_dictionary, course_dictionary):
     # Create command for submit button
     def click():
         
+        # Get Drop-down selection 
         entered_text = variable.get()
         
-        output_job.delete(0.0, END)
-        job = skill_dictionary[entered_text]
-        df_bls = b.get_df_bls()
-        job_list = b.get_job_list(df_bls)
+        # Get full list of possible skills 
         skill_list = mi.get_skill_list()
+        
+        # Set Job to drop-down text 
+        job = entered_text
+        
+        # Get Job_stats 
+        job_stats = b.get_job_stats(df_bls, job)
+        
+        #Get Indeed scrape 
         job_df = mi.scrape_pages(job,'Pittsburgh','PA',skill_list)
+        
+        # Match skills - jobs 
         job_skill_count = mi.return_job_count(skill_list,job_df)
-        output_job.insert(END, job_skill_count)
+        
+        # Match skills to Heinz course listings 
+        skill_map = hs.get_skill_map(job_skill_count['Skill'].values)
+        # turn courses into a printable format 
+        course_set = set()
+        for i in skill_map.values():
+            for j in i:
+                course_set.add(j)
+        course_pd = pd.DataFrame(list(course_set))
+
+        output_job.delete(0.0, END)
+        output_job.insert(END, job_stats)
         
         output_skills.delete(0.0, END)
-        skill = skill_dictionary[entered_text]
-        output_skills.insert(END, skill)
+        output_skills.insert(END, job_skill_count)
         
         output_courses.delete(0.0, END)
-        course = course_dictionary[entered_text]
-        output_courses.insert(END, course)
+        output_courses.insert(END, course_pd)
 
     window = Tk()
     window.title("SkillBuilder")
@@ -54,7 +80,7 @@ def skill_builder_interface(skill_dictionary, course_dictionary):
     lbl_input.grid(row=1, column=0, sticky=W)
 
     variable = StringVar(window)
-    jobs = list(skill_dictionary.keys())
+    jobs = job_list
     variable.set("No Job Selected")
 
     textentry_menu = OptionMenu(window, variable, *jobs)
@@ -81,6 +107,7 @@ def skill_builder_interface(skill_dictionary, course_dictionary):
     lbl_output_job.grid(row=6, column=0, sticky=W)
     output_job = Text(window, width=35, height=6, wrap=WORD, bg="MistyRose2", bd=2)
     output_job.grid(row=7, column=0, columnspan=1, sticky = N+S+W+E)
+
 
     # Create an exit button
     def close_window():
