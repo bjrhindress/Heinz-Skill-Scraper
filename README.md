@@ -1,4 +1,38 @@
-# SkillBuilder #
+ 
+ 
+ One “READEME” file
+
+o   Include installing any modules beyond what Anaconda provides
+
+§  Instructions on installing non-Anaconda stuff manually, not auto-installed
+
+o   Setting environment variables (but avoid this when possible)
+
+o   Obtaining an API key
+
+o   Instructions on how to install and run project
+
+§  Screenshots when helpful
+
+o   Link to video
+
+o   Submit as PDF
+
+
+# Heinz College SkillScraper #
+Do you have only 24 units left of electives and want to make sure your choices are aligned with employer demands?  The Heinz College SkillScraper is a one-stop shop for:
+- Researching current employment trends and salary stats (**Bureau of Labor Statistics**)
+- Learning about hot skills in today's marketplace (**Payscale.com**) 
+- Aggregating job board listings (**Indeed.com**) 
+- Choosing the most relevant courses to these demands, based on course descriptions and keywords (**Heinz Course Catalog**)
+
+## Group Members
+Jonathan Dyer, jondyer@cmu.edu
+Devraj Kori, dkori@andrew.cmu.edu
+Brian Rhindress, brhindre@andrew.cmu.edu
+Matthew Samach, msamach@andrew.cmu.edu
+Muriel Pokol, mpokol@andrew.cmu.edu
+
 Scraping CMU's course catalog and various job boards, matching the descriptions based on keywords
 
 ## Project title
