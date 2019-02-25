@@ -53,9 +53,6 @@ After installing necessary modules, simply run the **Interface.py** program to l
 
 - :school: **heinz_scraper.py**: This script scrapes the current Heinz course catalog, parses course descriptions, and compares keywords against key skill-words identified in the indeed.com scrape.  It then returns a list of all courses matching the job-skill pair. 
 
-## Motivation
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
- 
 ## Screenshots and Video 
 ![alt text](https://github.com/dkori/Course-Job-Match/blob/master/Final/output_screenshot.jpg)
 
