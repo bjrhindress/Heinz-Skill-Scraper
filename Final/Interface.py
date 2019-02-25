@@ -12,7 +12,7 @@ if "Tkinter" not in sys.modules:
 # read in bls_data_frame module
 import bls_data_frame as b
 # read in the match_indeed_to_skill module
-import match_indeed_to_skill as mi
+import Match_Indeed_to_skill as mi
 # read in the heinz_scraper module
 import heinz_scraper as hs
 import pandas as pd
@@ -68,7 +68,7 @@ def skill_builder_interface():
         output_job.insert(END, job_stats)
 
         output_skills.delete(0.0, END)
-        output_skills.insert(END, job_skill_count)
+        output_skills.insert(END, job_skill_count.to_string(index=False))
 
         output_courses.delete(0.0, END)
         output_courses.insert(END, course_pd.values)
