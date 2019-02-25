@@ -23,19 +23,25 @@ df_bls = b.get_df_bls()
 # Get full list of BLS-tracked jobs
 job_list = b.get_job_list(df_bls)
 
+# Get full list of possible skills
+print("Scraping skills from Payscale...".ljust(35), end='')
+skill_list = mi.get_skill_list()
+skill_list = [x.strip() for x in skill_list]
+print("done.")
+
+# Run initial Heinz Course scraping
+# full_skill_map = hs.get_full_skill_map_from_list(skill_list)
+
+# TODO: This is dummy data, replace with actual data...
 skill_dictionary = {'Financial Analyst':['Know how to analyze things I guess', 'Statistical analysis specifically'], 'Project Manager':'Dont hate people'}
 course_dictionary = {'Financial Analyst':['Programming R for Analytics', 'Statistical Analysis for Analytics 101'], 'Project Manager':'Project Management 101'}
 
-def skill_builder_interface(skill_dictionary, course_dictionary):
-
+def skill_builder_interface():
     # Create command for submit button
     def click():
 
         # Get Drop-down selection
         entered_text = variable.get()
-
-        # Get full list of possible skills
-        skill_list = mi.get_skill_list()
 
         # Set Job to drop-down text
         job = entered_text
@@ -51,11 +57,11 @@ def skill_builder_interface(skill_dictionary, course_dictionary):
 
         # Match skills to Heinz course listings
         skill_map = hs.get_skill_map(job_skill_count['Skill'].values)
+
         # turn courses into a printable format
         course_set = set()
         for i in skill_map.values():
-            for j in i:
-                course_set.add(j)
+            course_set.update(i)
         course_pd = pd.DataFrame(list(course_set))
 
         output_job.delete(0.0, END)
@@ -118,4 +124,7 @@ def skill_builder_interface(skill_dictionary, course_dictionary):
 
     window.mainloop()
 
-skill_builder_interface(skill_dictionary, course_dictionary)
+###########################
+# Do that thing
+skill_builder_interface()
+###########################

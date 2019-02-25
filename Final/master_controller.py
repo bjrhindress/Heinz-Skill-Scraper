@@ -21,7 +21,7 @@ job_df = mi.scrape_pages('Financial Analysts','Pittsburgh','PA',skill_list)
 job_skill_count = mi.return_job_count(skill_list,job_df)
 
 # Get skill_map
-skill_map = hs.get_skill_map(job_skill_count['Skill'].values)
+skill_map = hs.get_skill_map(job_skill_count["Skill"].values)
 
 for i in skill_map.items():
     print(i)

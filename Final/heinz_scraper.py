@@ -137,7 +137,10 @@ def _map_skills(skills_list):
                 parsed_tokens.append(lemma)
 
         # finally add parsed text to dictionary
-        parsed_descriptions[name] = ' '.join(parsed_tokens)
+        parsed_descriptions[name] = parsed_tokens
+    print(parsed_descriptions[name])
+    from time import sleep
+    sleep(3)
     print("done.")
 #####################################################
 
@@ -150,8 +153,16 @@ def _map_skills(skills_list):
         # now check every course for that skill
         for course_name in parsed_descriptions.keys():
             # if that skill appears in the description, add to the map
-            if skill.strip().lower() in parsed_descriptions[course_name]:
-                skills_to_courses[skill].append(course_name)
+            if len(skill.split(' ')) > 1:   # handle multi-word skills
+                skillwords = skill.strip().lower().split(' ')
+                if set(skillwords).issubset(parsed_descriptions[course_name]):
+                    # print("Match:", skill, course_name)
+                    skills_to_courses[skill].append(course_name)
+
+            else:
+                if skill.strip().lower() in parsed_descriptions[course_name]:
+                    # print("Match:", skill, course_name)
+                    skills_to_courses[skill].append(course_name)
 
     # return the final mapping, but only the nonempty elements
     print("done.")
@@ -165,14 +176,7 @@ def _map_skills(skills_list):
 def get_full_skill_map():
     import csv
     try:        # check to see if we've already done the scraping work
-        with open('heinz_skills_courses.csv', mode='r', newline='') as csvfile:
-            print("Reading csv...".ljust(35), end='')
-            csvreader = csv.reader(csvfile, delimiter=',')
-            skill_map = {}
-            for row in csvreader:
-                skill_map[row[0]] = row[1:]
-
-        print("done.")
+        skill_map = read_from_csv()
         return skill_map
 
     except:     # if not then start the process anew
@@ -184,21 +188,57 @@ def get_full_skill_map():
         all_skills = [x.strip() for x in all_skills]
         print("done.")
 
-        return get_skill_map(all_skills)
+        print("\nScraping course website:")
+        print("------------------------")
+        results = _map_skills(all_skills)
+        print("------------------------")
+
+        write_to_csv(results)
+        return results
 
 
-def get_skill_map(skill_list):
+def get_full_skill_map_from_list(all_skills):
+    import csv
+    try:        # check to see if we've already done the scraping work
+        skill_map = read_from_csv()
+        return skill_map
+
+    except:     # if not then start the process anew
+        # remove leading and trailing spaces for every skill in all skills
+        print("\nScraping course website:")
+        print("------------------------")
+        results = _map_skills(all_skills)
+        print("------------------------")
+
+        write_to_csv(results)
+        return results
+
+
+def get_skill_map(sub_list):
 # Tests if an output file called heinz_skills_courses.csv is present in the directory,
 # if not, it writes the file - a full mapping of skills and heinz courses.
 #
 # Either way returns a dictionary {str: list} with the required info.
-    print("\nScraping course website:")
-    print("------------------------")
-    results = _map_skills(skill_list)
-    print("------------------------")
-    return results
+    import csv
+    try:        # check to see if we've already done the scraping work
+        full_skill_map = read_from_csv()
+        sub_skill_map = {}
+        for k in sub_list:
+            v = full_skill_map.get(k)
+            if v:
+                sub_skill_map[k] = v
+
+        return sub_skill_map
+
+    except:     # if not then start the process anew
+        print("\nScraping course website:")
+        print("------------------------")
+        results = _map_skills(skill_list)
+        print("------------------------")
+        return results
 
 
+### DEPRECATED ###
 def get_skill_map_pandas(skill_list):
 # Tests if an output file called heinz_skills_courses.csv is present in the directory,
 # if not, it writes the file - a full mapping of skills and heinz courses.
@@ -211,6 +251,19 @@ def get_skill_map_pandas(skill_list):
     except:
         results = pd.DataFrame(get_skill_map(all_skills))
         write_to_csv(results)
+
+
+# Helper function to read a dictionary of form {str: list} from csv
+def read_from_csv():
+    with open('heinz_skills_courses.csv', mode='r', newline='') as csvfile:
+        print("Reading csv...".ljust(20), end='')
+        csvreader = csv.reader(csvfile, delimiter=',')
+        skill_map = {}
+        for row in csvreader:
+            skill_map[row[0]] = row[1:]
+
+    print("done.")
+    return skill_map
 
 
 # Helper function to write a dictionary of form {str: list} to csv
@@ -233,5 +286,8 @@ if __name__ == '__main__':
     else:
         # results = get_skill_map(['management', 'accounting', 'soft skills'])
         results = get_full_skill_map()
+
+        for i in results.items():
+            print(i)
 
         write_to_csv(results)
