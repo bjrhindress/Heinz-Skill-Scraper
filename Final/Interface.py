@@ -26,7 +26,10 @@ job_list = b.get_job_list(df_bls)
 # Get full list of possible skills
 print("Scraping skills from Payscale...".ljust(35), end='')
 skill_list = mi.get_skill_list()
-skill_list = [x.strip() for x in skill_list]
+#remove some skills that are returning erroneous matches. 
+to_remove=[' Training ', ' Tools ', ' Design ']
+for x in to_remove:
+    skill_list.remove(x)
 print("done.")
 
 # Run initial Heinz Course scraping
@@ -54,9 +57,16 @@ def skill_builder_interface():
 
         # Match skills - jobs
         job_skill_count = mi.return_job_count(skill_list,job_df)
+        
+        
+        #strip the skills returned from job_skill_count to match with the skill map
+        job_skill_count=job_skill_count.applymap(lambda x: x.strip() if type(x)==str else x)
+
+        #to avoid matching too many courses, only return course matches for top 10 skills
+        top_10=job_skill_count.head(10)       
 
         # Match skills to Heinz course listings
-        skill_map = hs.get_skill_map(job_skill_count['Skill'].values)
+        skill_map = hs.get_skill_map(top_10['Skill'].values)
 
         # turn courses into a printable format
         course_set = set()
