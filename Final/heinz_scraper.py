@@ -182,7 +182,7 @@ def get_full_skill_map():
     except:     # if not then start the process anew
         print("Scraping skills from Payscale...".ljust(35), end='')
         # read in the skills scraped from payscale, cleaned by the match_indeed_to_skill module
-        import match_indeed_to_skill as mi
+        import Match_Indeed_to_skill as mi
         all_skills = mi.get_skill_list()
         # remove leading and trailing spaces for every skill in all skills
         all_skills = [x.strip() for x in all_skills]
