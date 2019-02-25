@@ -74,6 +74,9 @@ def get_course_links():
 
     return dict(zip(names, links))
 
+
+
+
 # Main function that puts it all together
 def get_skill_map(skills_list):
     """
@@ -150,16 +153,27 @@ def write_to_csv(skill_map):
             entry = [name] + li
             writer.writerow(entry)
 
+#read in the skills scraped from payscale, cleaned by the match_indeed_to_skill module
+import Match_Indeed_to_skill as mi
+all_skills=mi.get_skill_list()
+#remove leading and trailing spaces for every skill in all skills
+all_skills=[x[1:len(x)-1] for x in all_skills]
 
-# accepts arbitrary number of command-line args as "Skills"
-if __name__ == '__main__':
-    import sys
+# tests if an output file called heinz_skills_courses.csv is present in the directory,
+#if not, it writes the file - a full mapping of skills and heinz courses.
 
-    if len(sys.argv) > 1:
-        test_list = sys.argv[1:]
-    else:
-        test_list = ['Management', 'software', 'knowledge']
+import pandas as pd
 
-    results = get_skill_map(test_list)
-
-    write_to_csv(results)
+try: 
+    pd.read_csv('heinz_skills_courses.csv')
+except:
+    if __name__ == '__main__':
+        import sys
+        
+        if len(sys.argv) > 1:
+            test_list = sys.argv[1:]
+        else:
+                
+            results = get_skill_map(all_skills)
+                
+            write_to_csv(results)
