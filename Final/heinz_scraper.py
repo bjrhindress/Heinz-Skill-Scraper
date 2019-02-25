@@ -87,9 +87,6 @@ def get_skill_map(skills_list):
     course_dict = get_course_links()
     course_descriptions = {}
 
-    # then scrape the description text for each link
-    for name, link in course_dict.items():
-        course_descriptions[name] = get_course_description(link)
 
 #####################################################
 # IF YOU CANNOT GET SPACY/NLP TO WORK:
