@@ -85,7 +85,7 @@ def get_skill_map(skills_list):
     """
     # first get the links for all Heinz courses
     course_dict = get_course_links()
-    course_descriptions = course_dict.copy()
+    course_descriptions = {}
 
     # then scrape the description text for each link
     for name, link in course_dict.items():
@@ -114,7 +114,7 @@ def get_skill_map(skills_list):
 
     # time for a little nlp (to lemmatize the descriptions)
     # we'll store the results in a new dictionary
-    parsed_descriptions = {}.fromkeys(course_descriptions.keys(), None)
+    parsed_descriptions = {}
     for name, text in course_descriptions.items():
         parsed_text = nlp(text)
         parsed_tokens = []
@@ -126,54 +126,65 @@ def get_skill_map(skills_list):
                 parsed_tokens.append(lemma)
 
         # finally add list to dictionary
-        parsed_descriptions[name] = parsed_tokens
+        parsed_descriptions[name] = ' '.join(parsed_tokens)
 #####################################################
 
 
     # now we can iterate through the skills list and build our final dictionary
     # give each skill its own list
-    skills_to_courses = {k : [] for k in skills_list}
+    skills_to_courses = { k : [] for k in skills_list }
 
     for skill in skills_list:
         # now check every course for that skill
         for course_name in parsed_descriptions.keys():
             # if that skill appears in the description, add to the map
-            if skill.lower() in parsed_descriptions[course_name]:
+            if skill.strip().lower() in parsed_descriptions[course_name]:
                 skills_to_courses[skill].append(course_name)
 
-    # return the final mapping
-    return skills_to_courses
+    # return the final mapping, but only the nonempty elements
+    return { key : val for key, val in skills_to_courses.items() if val }
 
 
 # write a dictionary of form {str: list} to csv
 def write_to_csv(skill_map):
-    with open('heinz_skills_courses.csv', 'w') as file:
+    with open('heinz_skills_courses.csv', 'w', newline='') as file:
         writer = csv.writer(file)
         for name, li in skill_map.items():
             entry = [name] + li
             writer.writerow(entry)
 
-#read in the skills scraped from payscale, cleaned by the match_indeed_to_skill module
-import Match_Indeed_to_skill as mi
-all_skills=mi.get_skill_list()
-#remove leading and trailing spaces for every skill in all skills
-all_skills=[x[1:len(x)-1] for x in all_skills]
 
-# tests if an output file called heinz_skills_courses.csv is present in the directory,
-#if not, it writes the file - a full mapping of skills and heinz courses.
 
-import pandas as pd
+# #read in the skills scraped from payscale, cleaned by the match_indeed_to_skill module
+# import Match_Indeed_to_skill as mi
+# all_skills=mi.get_skill_list()
+# #remove leading and trailing spaces for every skill in all skills
+# all_skills=[x.strip() for x in all_skills]
 
-try: 
-    pd.read_csv('heinz_skills_courses.csv')
-except:
-    if __name__ == '__main__':
-        import sys
-        
-        if len(sys.argv) > 1:
-            test_list = sys.argv[1:]
-        else:
-                
-            results = get_skill_map(all_skills)
-                
-            write_to_csv(results)
+
+
+# Tests if an output file called heinz_skills_courses.csv is present in the directory,
+# if not, it writes the file - a full mapping of skills and heinz courses.
+#
+# Either way returns a pandas dataframe with the required info.
+# import pandas as pd
+#
+# try:
+#     pd.read_csv('heinz_skills_courses.csv')
+# except:
+#     results = get_skill_map(all_skills)
+#     write_to_csv(results)
+
+
+
+
+if __name__ == '__main__':
+    import sys
+
+    if len(sys.argv) > 1:
+        test_list = sys.argv[1:]
+    else:
+
+        results = get_skill_map(['management', 'accounting', 'soft skills'])
+
+        write_to_csv(results)
