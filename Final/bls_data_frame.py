@@ -34,6 +34,7 @@ def get_df_bls():
 
 def get_job_stats(df_bls, sample_job):
     # test with job
+
     
     	# Retrieve key indicators
     total_employment = df_bls['TOT_EMP'][sample_job]
