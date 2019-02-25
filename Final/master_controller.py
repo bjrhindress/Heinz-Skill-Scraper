@@ -1,7 +1,7 @@
 # read in bls_data_frame module
 import bls_data_frame as b
-# read in the Match_Indeed_to_skill module
-import Match_Indeed_to_skill as mi
+# read in the match_indeed_to_skill module
+import match_indeed_to_skill as mi
 # read in the heinz_scraper module
 import heinz_scraper as hs
 
