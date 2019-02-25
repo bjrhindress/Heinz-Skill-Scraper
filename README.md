@@ -49,12 +49,18 @@ o   Instructions on how to install and run project
 
 ## Modules included in this project: 
 
-- **Interface.py**: The Main Controller.  This script creates the Heinz SkillScraper GUI, allows for user input, and draws on data from each of the other modules.
+- **Interface.py**: The Main Controller :iphone:.  This script creates the Heinz SkillScraper GUI, allows for user input, and draws on data from each of the other modules.
 
-- **heinz_scraper.py**: 
+- **bls_data_frame.py** :chart: This script generates a data frame, list of BLS-tracked jobs, and a list of salary and employment figures for a selected job.
 
-- **bls_data_frame.py** :chart: This script generates a data frame, list of BLS-tracked jobs, and a list of salary and employment figures for a selected job. 
+- **payscale_scraper.py** :dollar:This scrapes payscale.com for an up-to-date list of payscale.com skill listings. Not used in production version. 
 
+- **Match_Indeed_to_skill.py** :briefcase: Scrapes the top 5-pages from a selected indeed.com job search. Cross-compares and counts the number of job skill occurrences, based on payscale.com skill lists. 
+
+- **heinz_scraper.py** :school: This script scrapes the current Heinz course catalog, parses course descriptions, and compares keywords against key skill-words identified in the indeed.com scrape.  It then returns a list of all courses matching the job-skill pair. 
+
+
+- 
 ## Motivation
 A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
 
