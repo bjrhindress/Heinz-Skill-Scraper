@@ -47,6 +47,13 @@ o   Obtaining an API key
 
 o   Instructions on how to install and run project
 
+## Modules included in this project: 
+
+- **Interface.py**: The Main Controller.  This script creates the Heinz SkillScraper GUI, allows for user input, and draws on data from each of the other modules.
+
+- **heinz_scraper.py**: 
+
+- **bls_data_frame.py** :chart: This script generates a data frame, list of BLS-tracked jobs, and a list of salary and employment figures for a selected job. 
 
 ## Motivation
 A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
