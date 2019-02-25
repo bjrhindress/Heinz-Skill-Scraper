@@ -54,6 +54,8 @@ def skill_builder_interface():
 
         #Get Indeed scrape
         job_df = mi.scrape_pages(job,'Pittsburgh','PA',skill_list)
+        #limit indeed scrape to just first two columns, for job output
+        job_df_for_output=job_df[['Job Title', 'Employer']]
 
         # Match skills - jobs
         job_skill_count = mi.return_job_count(skill_list,job_df)
@@ -78,10 +80,13 @@ def skill_builder_interface():
         output_job.insert(END, job_stats)
 
         output_skills.delete(0.0, END)
-        output_skills.insert(END, job_skill_count.to_string(index=False))
+        output_skills.insert(END, job_skill_count.to_string(index=False,justify="center"))
 
         output_courses.delete(0.0, END)
         output_courses.insert(END, course_pd.values)
+        
+        output_postings.delete(0.0,END)
+        output_postings.insert(END,job_df_for_output.to_string(index=False,justify="center"))
 
     window = Tk()
     window.title("SkillBuilder")
@@ -123,7 +128,11 @@ def skill_builder_interface():
     lbl_output_job.grid(row=6, column=0, sticky=W)
     output_job = Text(window, width=35, height=6, wrap=WORD, bg="MistyRose2", bd=2)
     output_job.grid(row=7, column=0, columnspan=1, sticky = N+S+W+E)
-
+    
+    lbl_output_postings = Label(window, text="\nCurrent Postings in Pittsburgh,PA", bg="white", fg="red4", font="times 14 bold")
+    lbl_output_postings.grid(row=6, column=1,sticky=W)
+    output_postings = Text(window, width=35, height=6, wrap=NONE, bg="MistyRose2", bd=0)
+    output_postings.grid(row=7, column=1, columnspan=1, sticky = N+S+W+E)
 
     # Create an exit button
     def close_window():
