@@ -1,14 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[148]:
 
 
 def get_skill_list():
     #read in list of skills as 
     import pandas as pd
-    import re
-    from bs4 import BeautifulSoup
     df_skills= pd.read_csv('payscale_clean_data.csv')
     #store the list of skills from payscale
     raw_skill_list=list(df_skills["PopularSkills"])
@@ -95,9 +92,14 @@ def scrape_page(page_num,job,city,state,skill_list):
         #make job page into BeautifulSoup object
         job_soup=BeautifulSoup(job_page.content,'html.parser')
         #retrieve the job title
-        job_position=job_soup.find(class_='icl-u-xs-mb--xs').get_text()
+        try:
+            job_position=job_soup.find(class_='icl-u-xs-mb--xs').get_text()
+        except:
+            job_position=""
         #retrieve company name from job rating line on page
+        
         job_rating_line=job_soup.find(class_='jobsearch-InlineCompanyRating')
+        
         #some jobs seem to not have a job rating line, so wrap this step in try
         try:
             job_employer=job_rating_line.find(class_='icl-u-lg-mr--sm').get_text()
@@ -152,7 +154,7 @@ def scrape_pages(user_input_job,user_input_city,user_input_state,skill_list):
     return(df)
 
 
-#df=scrape_pages('analyst','pittsburgh','pa',skill_list)
+
 
 
 #function to return frame of skills listing the number of jobs that matched each skill
@@ -167,5 +169,9 @@ def return_job_count(skill_list,df):
     job_counts=job_counts[job_counts["Job_Matches"]>0]
     return(job_counts)
 
+skill_list=get_skill_list()
+
+df=scrape_pages("Financial Analyst","Pittsburgh","PA",skill_list)
+return_job_count(skill_list,df)
 #df2 = return_job_count("Financial Analysts","Pittsburgh","PA")
 #df2
