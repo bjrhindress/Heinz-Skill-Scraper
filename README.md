@@ -2,15 +2,7 @@
  
  One “READEME” file
 
-o   Include installing any modules beyond what Anaconda provides
 
-§  Instructions on installing non-Anaconda stuff manually, not auto-installed
-
-o   Setting environment variables (but avoid this when possible)
-
-o   Obtaining an API key
-
-o   Instructions on how to install and run project
 
 §  Screenshots when helpful
 
@@ -26,17 +18,35 @@ Do you have only 24 units left of electives and want to make sure your choices a
 - Aggregating job board listings (**Indeed.com**) 
 - Choosing the most relevant courses to these demands, based on course descriptions and keywords (**Heinz Course Catalog**)
 
-## Group Members
-Jonathan Dyer, jondyer@cmu.edu
-Devraj Kori, dkori@andrew.cmu.edu
-Brian Rhindress, brhindre@andrew.cmu.edu
-Matthew Samach, msamach@andrew.cmu.edu
-Muriel Pokol, mpokol@andrew.cmu.edu
+## Group 7 Members
+- Jonathan Dyer, jondyer@cmu.edu
+- Devraj Kori, dkori@andrew.cmu.edu
+- Muriel Pokol, mpokol@andrew.cmu.edu
+- Brian Rhindress, brhindre@andrew.cmu.edu
+- Matthew Samach, msamach@andrew.cmu.edu
 
-Scraping CMU's course catalog and various job boards, matching the descriptions based on keywords
+## Installation Instructions 
 
-## Project title
-A little info about your project and/ or overview that explains **what** the project is about.
+Modules used in the Heinz SkillScraper include: 
+- SpaCy: https://spacy.io/usage/ 
+- Pandas: https://anaconda.org/conda-forge/pandas
+- Tkinter: https://docs.python.org/3/library/tkinter.html 
+- BeautifulSoup: https://pypi.org/project/beautifulsoup4/
+- urllib.request: 
+- re (regex): 
+
+o   Include installing any modules beyond what Anaconda provides
+
+§  Instructions on installing non-Anaconda stuff manually, not auto-installed
+
+o   Setting environment variables (but avoid this when possible)
+
+o   Obtaining an API key
+
+## Run Instructions 
+
+o   Instructions on how to install and run project
+
 
 ## Motivation
 A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
