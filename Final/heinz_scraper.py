@@ -83,66 +83,70 @@ def get_skill_map(skills_list):
     Returns a dict mapping each skill in the skill_list
     to a list of course names associated with that skill.
     """
-    # first get the links for all Heinz courses
-    course_dict = get_course_links()
-    course_descriptions = course_dict.copy()
-
-    # then scrape the description text for each link
-    for name, link in course_dict.items():
-        course_descriptions[name] = get_course_description(link)
-
-#####################################################
-# IF YOU CANNOT GET SPACY/NLP TO WORK:
-#   Replace the next block with the following code.
-#
-# # we'll store the results in a new dictionary
-# parsed_descriptions = course_descriptions.copy()
-# for name, text in course_descriptions.items():
-#     parsed_tokens = []
-#
-#     # remove all stopwords, punctuation, and spaces
-#     for token in text.split(' '):
-#         token = re.sub(r'[^\w\s]', '', token)
-#         token = token.strip().lower()
-#
-#         if token not in ['the', 'a','as', 'and', 'an', '&', '-', 'for']:
-#             parsed_tokens.append(token)
-#
-#     # finally add list to dictionary
-#     parsed_descriptions[name] = parsed_tokens
-#####################################################
-
-    # time for a little nlp (to lemmatize the descriptions)
-    # we'll store the results in a new dictionary
-    parsed_descriptions = {}.fromkeys(course_descriptions.keys(), None)
-    for name, text in course_descriptions.items():
-        parsed_text = nlp(text)
-        parsed_tokens = []
-
-        # remove all stopwords, punctuation, and spaces
-        for token in parsed_text:
-            lemma = token.lemma_.lower()
-            if not (nlp.vocab[lemma].is_stop or token.pos_ == 'PUNCT' or token.pos_ == 'SPACE'):
-                parsed_tokens.append(lemma)
-
-        # finally add list to dictionary
-        parsed_descriptions[name] = parsed_tokens
-#####################################################
-
-
-    # now we can iterate through the skills list and build our final dictionary
-    # give each skill its own list
-    skills_to_courses = {k : [] for k in skills_list}
-
-    for skill in skills_list:
-        # now check every course for that skill
-        for course_name in parsed_descriptions.keys():
-            # if that skill appears in the description, add to the map
-            if skill.lower() in parsed_descriptions[course_name]:
-                skills_to_courses[skill].append(course_name)
-
-    # return the final mapping
-    return skills_to_courses
+    try: 
+        return(pd.read_csv('heinz_skills_courses.csv'))
+    except:
+        # first get the links for all Heinz courses
+        course_dict = get_course_links()
+        course_descriptions = course_dict.copy()
+    
+        # then scrape the description text for each link
+        for name, link in course_dict.items():
+            course_descriptions[name] = get_course_description(link)
+    
+    #####################################################
+    # IF YOU CANNOT GET SPACY/NLP TO WORK:
+    #   Replace the next block with the following code.
+    #
+    # # we'll store the results in a new dictionary
+    # parsed_descriptions = course_descriptions.copy()
+    # for name, text in course_descriptions.items():
+    #     parsed_tokens = []
+    #
+    #     # remove all stopwords, punctuation, and spaces
+    #     for token in text.split(' '):
+    #         token = re.sub(r'[^\w\s]', '', token)
+    #         token = token.strip().lower()
+    #
+    #         if token not in ['the', 'a','as', 'and', 'an', '&', '-', 'for']:
+    #             parsed_tokens.append(token)
+    #
+    #     # finally add list to dictionary
+    #     parsed_descriptions[name] = parsed_tokens
+    #####################################################
+    
+        # time for a little nlp (to lemmatize the descriptions)
+        # we'll store the results in a new dictionary
+        parsed_descriptions = {}.fromkeys(course_descriptions.keys(), None)
+        for name, text in course_descriptions.items():
+            parsed_text = nlp(text)
+            parsed_tokens = []
+    
+            # remove all stopwords, punctuation, and spaces
+            for token in parsed_text:
+                lemma = token.lemma_.lower()
+                if not (nlp.vocab[lemma].is_stop or token.pos_ == 'PUNCT' or token.pos_ == 'SPACE'):
+                    parsed_tokens.append(lemma)
+    
+            # finally add list to dictionary
+            parsed_descriptions[name] = parsed_tokens
+    #####################################################
+    
+    
+        # now we can iterate through the skills list and build our final dictionary
+        # give each skill its own list
+        skills_to_courses = {k : [] for k in skills_list}
+    
+        for skill in skills_list:
+            # now check every course for that skill
+            for course_name in course_descriptions.keys():
+                # if that skill appears in the description, add to the map
+                if skill.lower() in course_descriptions[course_name]:
+                    skills_to_courses[skill].append(course_name)
+    
+        write_to_csv(skills_to_courses)
+        # return the final mapping
+        return skills_to_courses
 
 
 # write a dictionary of form {str: list} to csv

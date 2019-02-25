@@ -13,23 +13,7 @@ mapped to total employment, 25%, median, and 75% Annual Salary Figures
 def get_job_list(df_bls):
     # all possible jobs 
     job_list = df_bls.index.values.tolist()
-    
-    # test with job
-    sample_job = 'Financial Analysts' 
-    
-    	# Retrieve key indicators
-    total_employment = df_bls['TOT_EMP'][sample_job]
-    annual_salary_25 = df_bls['A_PCT25'][sample_job]
-    annual_salary_median = df_bls['A_MEDIAN'][sample_job]
-    annual_salary_75 = df_bls['A_PCT75'][sample_job]
-    
-    print('\nFor ', sample_job)
-    print('--------------')
-    print('Total Employment: ', total_employment)
-    print('Annual Salary 25 Percentile: ', annual_salary_25)
-    print('Annual Median Salary: ', annual_salary_median)
-    print('Annual Salary 75 Percentile: ', annual_salary_75)
-        
+           
     return(job_list)
 
 def get_df_bls():
@@ -47,3 +31,19 @@ def get_df_bls():
     df_bls = df_bls[['TOT_EMP','A_PCT25','A_MEDIAN','A_PCT75']]
     
     return(df_bls)
+
+def get_job_stats(df_bls, sample_job):
+    # test with job
+    sample_job = 'Financial Analysts' 
+    
+    	# Retrieve key indicators
+    total_employment = df_bls['TOT_EMP'][sample_job]
+    annual_salary_25 = df_bls['A_PCT25'][sample_job]
+    annual_salary_median = df_bls['A_MEDIAN'][sample_job]
+    annual_salary_75 = df_bls['A_PCT75'][sample_job]
+    
+    return(str('For ' + sample_job +
+    '\nTotal Employment: ' + total_employment +
+    '\nAnnual Salary 25 Percentile: ' + annual_salary_25 +
+    '\nAnnual Median Salary: ' + annual_salary_median +
+    '\nAnnual Salary 75 Percentile: ' + annual_salary_75))

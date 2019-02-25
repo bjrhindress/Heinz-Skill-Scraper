@@ -65,7 +65,7 @@ def skill_builder_interface(skill_dictionary, course_dictionary):
         output_skills.insert(END, job_skill_count)
         
         output_courses.delete(0.0, END)
-        output_courses.insert(END, course_pd)
+        output_courses.insert(END, course_pd.values)
 
     window = Tk()
     window.title("SkillBuilder")
