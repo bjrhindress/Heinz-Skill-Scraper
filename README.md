@@ -57,7 +57,7 @@ After installing necessary modules, simply run the **Interface.py** program to l
 A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
  
 ## Screenshots and Video 
-![alt text](https://raw.githubusercontent.com/dkori/Course-Job-Match/Final/output_screenshot.jpg)
+![alt text](https://github.com/dkori/Course-Job-Match/blob/master/Final/output_screenshot.jpg)
 
 o   Link to video
 
