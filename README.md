@@ -57,7 +57,7 @@ After installing necessary modules, simply run the **Interface.py** program to l
 A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
  
 ## Screenshots and Video 
-![Alt text](output_screenshot.jpg)
+![Alt text](Final/output_screenshot.jpg)
 
 o   Link to video
 
