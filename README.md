@@ -48,7 +48,7 @@ Demo video: https://youtu.be/ve7diLk9Or0
 
 ## Sub-modules in this project:
 
-- :iphone: **Interface.py**: The Main Controller. This script creates the Heinz SkillScraper GUI, allows for user input, and draws on data from each of the other modules.
+- :iphone: **SkillScraper.py**: The Main Controller. This script creates the Heinz SkillScraper GUI, allows for user input, and draws on data from each of the other modules.
 
 - :chart: **bls_data_frame.py**: This script generates a data frame, list of BLS-tracked jobs, and a list of salary and employment figures for a selected job.
 
