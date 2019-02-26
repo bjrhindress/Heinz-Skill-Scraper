@@ -34,7 +34,7 @@ Installation for the above modules is straightforward:
 2. Open your Anaconda prompt (or any command prompt if not using Anaconda) and activate whatever environment you plan to use.  
 
 3. Run the following command (replacing `conda` with `pip` if not using Anaconda) and select `[y]` or press `enter` when prompted:   
-`conda install pandas beautifulsoup4 spacy`  
+`conda install pandas beautifulsoup4 spacy lxml`  
 
 4. Now run the following command **as Administrator** (`sudo` on \*nix, run Anaconda prompt "as Administrator" on Windows):  
 `python -m spacy download en`
@@ -59,7 +59,7 @@ o   Link to video
 
 - :dollar: **payscale_scraper.py**: This scrapes payscale.com for an up-to-date list of payscale.com skill listings. Not used in production version.
 
-- :briefcase: **Match_Indeed_to_skill.py**: Scrapes the top 5-pages from a selected indeed.com job search. Cross-compares and counts the number of job skill occurrences, based on payscale.com skill lists.
+- :briefcase: **match_indeed_to_skill.py**: Scrapes the top 5-pages from a selected indeed.com job search. Cross-compares and counts the number of job skill occurrences, based on payscale.com skill lists.
 
 - :school: **heinz_scraper.py**: This script scrapes the current Heinz course catalog, parses course descriptions, and compares keywords against key skill-words identified in the indeed.com scrape.  It then returns a list of all courses matching the job-skill pair.
 

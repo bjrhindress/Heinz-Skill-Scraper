@@ -138,9 +138,6 @@ def _map_skills(skills_list):
 
         # finally add parsed text to dictionary
         parsed_descriptions[name] = parsed_tokens
-    print(parsed_descriptions[name])
-    from time import sleep
-    sleep(3)
     print("done.")
 #####################################################
 
@@ -182,7 +179,7 @@ def get_full_skill_map():
     except:     # if not then start the process anew
         print("Scraping skills from Payscale...".ljust(35), end='')
         # read in the skills scraped from payscale, cleaned by the match_indeed_to_skill module
-        import Match_Indeed_to_skill as mi
+        import match_indeed_to_skill as mi
         all_skills = mi.get_skill_list()
         # remove leading and trailing spaces for every skill in all skills
         all_skills = [x.strip() for x in all_skills]
@@ -233,7 +230,7 @@ def get_skill_map(sub_list):
     except:     # if not then start the process anew
         print("\nScraping course website:")
         print("------------------------")
-        results = _map_skills(skill_list)
+        results = _map_skills(sub_list)
         print("------------------------")
         return results
 
@@ -247,7 +244,7 @@ def get_skill_map_pandas(skill_list):
     import pandas as pd
 
     try:
-        pd.read_csv('heinz_skills_courses.csv', header=None)
+        pd.read_csv('./data/heinz_skills_courses.csv', header=None)
     except:
         results = pd.DataFrame(get_skill_map(all_skills))
         write_to_csv(results)
@@ -255,7 +252,7 @@ def get_skill_map_pandas(skill_list):
 
 # Helper function to read a dictionary of form {str: list} from csv
 def read_from_csv():
-    with open('heinz_skills_courses.csv', mode='r', newline='') as csvfile:
+    with open('./data/heinz_skills_courses.csv', mode='r', newline='') as csvfile:
         print("Reading csv...".ljust(20), end='')
         csvreader = csv.reader(csvfile, delimiter=',')
         skill_map = {}
@@ -268,7 +265,7 @@ def read_from_csv():
 
 # Helper function to write a dictionary of form {str: list} to csv
 def write_to_csv(skill_map):
-    with open('heinz_skills_courses.csv', 'w', newline='') as file:
+    with open('./data/heinz_skills_courses.csv', 'w', newline='') as file:
         writer = csv.writer(file)
         for name, li in skill_map.items():
             entry = [name] + li
