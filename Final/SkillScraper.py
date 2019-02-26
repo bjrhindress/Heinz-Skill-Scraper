@@ -2,7 +2,22 @@
 """
 Created on Sat Feb 23 14:34:54 2019
 
-@author: murie
+filename: SkillScraper.py
+
+Group members: 
+Jonathan Dyer
+Devraj Kori 
+Muriel Pokol 
+Brian Rhindress
+Matthew Samach 
+
+Code function: The Main Controller. This script creates the Heinz SkillScraper GUI, allows for user input, 
+and draws on data from each of the other modules to aggregate job-skill-course information. 
+
+Imported by: 
+Imports: Tkinter, bls_data_frame, match_indeed_to_skill,
+heinz_scraper, pandas, sys
+
 """
 
 import sys
@@ -33,12 +48,8 @@ for x in to_remove:
 print("done.")
 
 # Run initial Heinz Course scraping
-# full_skill_map = hs.get_full_skill_map_from_list(skill_list)
 
-# TODO: This is dummy data, replace with actual data...
-skill_dictionary = {'Financial Analyst':['Know how to analyze things I guess', 'Statistical analysis specifically'], 'Project Manager':'Dont hate people'}
-course_dictionary = {'Financial Analyst':['Programming R for Analytics', 'Statistical Analysis for Analytics 101'], 'Project Manager':'Project Management 101'}
-
+### Builds GUI ###
 def skill_builder_interface():
     # Create command for submit button
     def click():

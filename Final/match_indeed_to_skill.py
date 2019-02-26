@@ -1,8 +1,27 @@
 #!/usr/bin/env python
-# coding: utf-8
+"""
+Created on Sat Feb  9 19:29:13 2019
+
+filename: match_indeed_to_skill.py
+
+Group members: 
+Jonathan Dyer
+Devraj Kori 
+Muriel Pokol 
+Brian Rhindress
+Matthew Samach 
+
+Code function: Scrapes the top 5-pages from a selected indeed.com job search. 
+Cross-compares and counts the number of job skill occurrences, based on payscale.com skill lists.
+Also generates a df of job listings on indeed.come for the given job search. 
+
+Imported by: 
+Imports: urllib.request.urlopen, bs4.BeautifulSoup, csv
+
+"""
 
 
-
+### Gets list of skills from payscale.com csv ###
 def get_skill_list():
     #read in list of skills as
     import pandas as pd

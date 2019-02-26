@@ -1,21 +1,30 @@
 """
-BLS Data Access
-@author: Brian Rhindress
-2/22/19
+filename: bls_data_frame.py
+date: 2/22/19
 
-README:
+Group members: 
+Jonathan Dyer
+Devraj Kori 
+Muriel Pokol 
+Brian Rhindress
+Matthew Samach 
 
-This file initializes a data frame containing employment data indexed by job titles,
+Code function: This file initializes a data frame containing employment data indexed by job titles,
 mapped to total employment, 25%, median, and 75% Annual Salary Figures
+
+Imported by: SkillScraper.py
+Imports: pandas, csv
 
 """
 
+### Gets list of all possible jobs from BLS csv ###
 def get_job_list(df_bls):
     # all possible jobs
     job_list = df_bls.index.values.tolist()
 
     return(job_list)
 
+### Gets df of all BLS data ###
 def get_df_bls():
 
     import pandas as pd
@@ -32,9 +41,9 @@ def get_df_bls():
 
     return(df_bls)
 
+### Gets BLS stats for chosen job ###
 def get_job_stats(df_bls, sample_job):
     # test with job
-
 
     	# Retrieve key indicators
     total_employment = df_bls['TOT_EMP'][sample_job]

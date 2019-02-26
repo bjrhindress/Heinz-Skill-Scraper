@@ -2,12 +2,26 @@
 """
 Created on Sat Feb  9 19:29:13 2019
 
-@author: murie
+filename: payscale_scraper.py
+
+Group members: 
+Jonathan Dyer
+Devraj Kori 
+Muriel Pokol 
+Brian Rhindress
+Matthew Samach 
+
+Code function: This scrapes payscale.com for an up-to-date list of payscale.com skill listings. Not used in production version.
+
+Imported by: 
+Imports: urllib.request.urlopen, bs4.BeautifulSoup, csv
+
 """
 from urllib.request import urlopen  # b_soup_1.py
 from bs4 import BeautifulSoup
 import csv
 
+### Main scraper function ###
 def main():
     html = urlopen('https://www.payscale.com/index/US/Skill')
     bsyc = BeautifulSoup(html.read(), "lxml")
