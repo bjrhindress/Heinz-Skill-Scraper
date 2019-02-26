@@ -56,6 +56,8 @@ def skill_builder_interface():
         job_df = mi.scrape_pages(job,'Pittsburgh','PA',skill_list)
         #limit indeed scrape to just first two columns, for job output
         job_df_for_output=job_df[['Job Title', 'Employer']]
+        #concatenate the job and employer
+        job_postings=pd.DataFrame([i+', '+j for i, j in zip(job_df_for_output["Job Title"],job_df_for_output["Employer"])])
 
         # Match skills - jobs
         job_skill_count = mi.return_job_count(skill_list,job_df)
@@ -86,7 +88,7 @@ def skill_builder_interface():
         output_courses.insert(END, course_pd.values)
         
         output_postings.delete(0.0,END)
-        output_postings.insert(END,job_df_for_output.to_string(index=False,justify="center"))
+        output_postings.insert(END,job_postings)
 
     window = Tk()
     window.title("SkillBuilder")
