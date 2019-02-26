@@ -95,7 +95,7 @@ def skill_builder_interface():
     window.configure(bg="white")
 
     # add Heinz image
-    photo1 = PhotoImage(file="Skill_Scraper.gif")
+    photo1 = PhotoImage(file="./img/Skill_Scraper.gif")
     Label(window, image=photo1, bg="white").grid(row=0, column=0, sticky=W, columnspan=2)
 
     # Create job selection pull-down menu
