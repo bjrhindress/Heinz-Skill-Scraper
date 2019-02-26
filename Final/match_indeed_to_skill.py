@@ -4,9 +4,9 @@
 
 
 def get_skill_list():
-    #read in list of skills as 
+    #read in list of skills as
     import pandas as pd
-    df_skills= pd.read_csv('payscale_clean_data.csv')
+    df_skills= pd.read_csv('./data/payscale_clean_data.csv')
     #store the list of skills from payscale
     raw_skill_list=list(df_skills["PopularSkills"])
     #replace special characters with escapes, and split multiple skills separated by '/'
@@ -75,15 +75,15 @@ def scrape_page(page_num,job,city,state,skill_list):
     #locations
         job_location=card.find(class_='location').get_text()
         locations.append(job_location)
-    
-   
+
+
     #locations
     #lets make this dataframe
     #declare the empty lists that will become columns
     position_name=[]
     employer=[]
     full_description=[]
-    #in the future, we can develop a list of keywords that we'll 
+    #in the future, we can develop a list of keywords that we'll
     #search postings for, but for now, just return all capitalized
     #words besides common words
     for job_url in job_urls:
@@ -97,9 +97,9 @@ def scrape_page(page_num,job,city,state,skill_list):
         except:
             job_position=""
         #retrieve company name from job rating line on page
-        
+
         job_rating_line=job_soup.find(class_='jobsearch-InlineCompanyRating')
-        
+
         #some jobs seem to not have a job rating line, so wrap this step in try
         try:
             job_employer=job_rating_line.find(class_='icl-u-lg-mr--sm').get_text()
@@ -111,12 +111,12 @@ def scrape_page(page_num,job,city,state,skill_list):
         to_replace=['\n','\t','\.','\,','\(','\)','\;','\:']
         for x in to_replace:
             job_descrip.replace(x,' ')
-            
+
         #append all of the items created to the empty lists from last step
         position_name.append(job_position)
         employer.append(job_employer)
         full_description.append(job_descrip)
-        
+
     #for each skill in skill_list, search the job description to see if contains that skill
     #if it contains the skill, assign the value 1 to it and if not, assign 0
     #create blank dictionary that will store the 1-0 values
@@ -135,7 +135,7 @@ def scrape_page(page_num,job,city,state,skill_list):
     result_dict={'Job Title':position_name,
                 'Employer':employer,
                 'Location':locations,
-                'Posting Date':posting_dates, 
+                'Posting Date':posting_dates,
                 'Posting Url':job_urls,
                 'Full Job Description':full_description,
                 }
@@ -163,7 +163,7 @@ def return_job_count(skill_list,df):
     skill_sums=list()
     for skill in skill_list:
         skill_sums.append(sum(df[skill]))
-    
+
     job_counts_dict={"Skill":skill_list,"Job_Matches":skill_sums}
     job_counts=pd.DataFrame(job_counts_dict).sort_values(by="Job_Matches",ascending=False)
     job_counts=job_counts[job_counts["Job_Matches"]>0]
