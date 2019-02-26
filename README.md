@@ -63,16 +63,6 @@ o   Link to video
 
 - :school: **heinz_scraper.py**: This script scrapes the current Heinz course catalog, parses course descriptions, and compares keywords against key skill-words identified in the indeed.com scrape.  It then returns a list of all courses matching the job-skill pair.
 
-
-## Features
-What makes your project stand out?
-
-## Installation
-Provide step by step series of examples and explanations about how to get a development env running.
-
-## API Reference
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
-
 ## Credits
 Give proper credits. This could be a link to any repo which inspired you to build this project, any blogposts or links to people who contrbuted in this project.
 
