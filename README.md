@@ -63,9 +63,6 @@ o   Link to video
 
 - :school: **heinz_scraper.py**: This script scrapes the current Heinz course catalog, parses course descriptions, and compares keywords against key skill-words identified in the indeed.com scrape.  It then returns a list of all courses matching the job-skill pair.
 
-## Credits
-Give proper credits. This could be a link to any repo which inspired you to build this project, any blogposts or links to people who contrbuted in this project.
-
 ## License
 Carnegie Mellon University  
 Heinz College of Information Systems and Public Policy  
