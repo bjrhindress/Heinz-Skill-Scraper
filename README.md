@@ -1,10 +1,4 @@
 
-
-
-
-o   Submit as PDF
-
-
 # Heinz College SkillScraper #
 Do you have only 24 units left of electives and want to make sure your choices are aligned with employer demands? Let the Heinz College SkillScraper help you build the skills you need to land your dream job! The Heinz College SkillScraper is a one-stop shop for:
 - Researching current employment trends and salary stats (**Bureau of Labor Statistics**)
