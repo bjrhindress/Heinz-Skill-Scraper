@@ -33,15 +33,13 @@ Installation for the above modules is straightforward:
 
 2. Open your Anaconda prompt (or any command prompt if not using Anaconda) and activate whatever environment you plan to use.  
 
-3. Run the following command (replacing `conda` with `pip` if not using Anaconda):  
-
-`conda install pandas tkinter beautifulsoup4 spacy`  
+3. Run the following command (replacing `conda` with `pip` if not using Anaconda) and select `[y]` or press `enter` when prompted:   
+`conda install pandas beautifulsoup4 spacy`  
 
 4. Now run the following command **as Administrator** (`sudo` on \*nix, run Anaconda prompt "as Administrator" on Windows):  
-
 `python -m spacy download en`
 
-That's it! You're all ready to run the SkillScraper application.
+That's it! You're all ready to run the SkillScraper application.  
 
 
 ## Run Instructions
