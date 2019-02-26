@@ -41,7 +41,8 @@ That's it! You're all ready to run the SkillScraper application.
 After installing necessary modules, simply run the **SkillScraper.py** program to launch the GUI.  The integrated master controller within the GUI will call other necessary modules.  Select a job from the drop-down menu and wait for the information!
 
 ## Screenshots and Video
-![](https://github.com/dkori/Course-Job-Match/blob/master/Final/img/output_screenshot.png)
+![Program Output](./img/output_screenshot.png)
+<!-- ![](https://github.com/dkori/Course-Job-Match/blob/master/Final/img/output_screenshot.png) -->
 
 Demo video: https://youtu.be/ve7diLk9Or0
 
